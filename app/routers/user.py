@@ -13,7 +13,13 @@ router = APIRouter(
 @router.post("/",status_code=status.HTTP_201_CREATED,response_model=schemas.UserOut)
 def create_user(user: schemas.UserCreate,db: Session = Depends(get_db)):
     user.password = utils.hash(user.password)
+
+    check = db.query(models.User).filter(user.email==models.User.email).first()
+    if check:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,detail=f"User Already Exists")
     print('Visited')
+    posts = db.query(models.Post).all()
+    print(posts)
     new_user = models.User(**user.dict())
     db.add(new_user)
     db.commit()
