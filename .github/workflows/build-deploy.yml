@@ -80,20 +80,20 @@ jobs:
 
     steps:
       - name: pulling git repo
-      uses: actions/checkout@v2
+        uses: actions/checkout@v2
       - name: deploying to heroku
         uses: akhileshns/heroku-deploy@v3.12.14 # This is the action
-          with:
-            heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-            heroku_app_name: ${{secrets.HEROKU_APPNAME}} #Must be unique in Heroku
-            heroku_email: ${{secrets.HEROKU_EMAIL}}
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APPNAME}} #Must be unique in Heroku
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
 
-        # pull github repo
+          # pull github repo
 
-        #install  geroku cli
+          #install  geroku cli
 
-        #heroku login
+          #heroku login
 
-        #add git remote for heroku
+          #add git remote for heroku
 
-        #git push heroku main
+          #git push heroku main
