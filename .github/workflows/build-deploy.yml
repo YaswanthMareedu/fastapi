@@ -1,12 +1,6 @@
 name: Build and Deploy Code
 
-on:
-  push:
-    branches:
-      - "main"
-  pull_request:
-    branches:
-      - "main"
+on: [push,pull_request]
 
 jobs:
   job1:
@@ -25,8 +19,8 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
-          POSTGRES_DB: ${{secrets.POSTGRES_DB}}_test
+          POSTGRES_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
+          POSTGRES_DB: ${{secrets.DATABASE_NAME}}_test
         ports:
           - 5432:5432
         options: >-
@@ -50,5 +44,3 @@ jobs:
         run:
           pip install pytest
           pytest
-
-
