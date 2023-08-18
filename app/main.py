@@ -38,7 +38,7 @@ app.include_router(vote.router)
 
 @app.get("/")
 def root():
-    return {"message":"Welcome to Multiverse, Connect Together"}
+    return {"message":"Welcome to Multiverse, Lets Connect Together.."}
 
 
 
